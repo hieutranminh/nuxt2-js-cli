@@ -1,53 +1,78 @@
 <template>
-  <header class="header">
-    <!--TOP-->
-    <div class="header-top">
-      <!--Logo-->
-      <div class="logo">
-        <NuxtLink to="/">LOGO</NuxtLink>
+    <header class="header">
+      <!--TOP-->
+      <div class="header-top">
+        <!--Logo-->
+        <div class="logo">
+          <NuxtLink to="/">LOGO</NuxtLink>
+        </div>
+
+        <!--Search-->
+        <div class="search">Search</div>
+
+        <!--Button login & register-->
+        <client-only>
+          <div
+            v-if="!isAuthenticated"
+            class="btn-group">
+            <NuxtLink
+              v-slot="{ navigate }"
+              to="/login"
+              custom>
+              <button @click="navigate">
+                Login
+              </button>
+            </NuxtLink>
+
+            <NuxtLink
+              v-slot="{ navigate }"
+              to="/register"
+              custom>
+              <button @click="navigate">
+                Register
+              </button>
+            </NuxtLink>
+          </div>
+
+          <div
+            v-else
+            class="btn-group">
+            <button @click.prevent="userLogout">
+              Logout
+            </button>
+
+            <NuxtLink
+              v-slot="{ navigate }"
+              to="/profile"
+              custom>
+              <a href="#" @click="navigate">
+                Profile
+              </a>
+            </NuxtLink>
+          </div>
+        </client-only>
       </div>
 
-      <!--Search-->
-      <div class="search">Search</div>
-
-      <!--Button login & register-->
-      <div class="btn-group">
-        <NuxtLink
-          to="/login"
-          tag="button">
-          Login
-        </NuxtLink>
-
-        <NuxtLink
-          to="/register"
-          tag="button">
-          Register
-        </NuxtLink>
-      </div>
-    </div>
-
-    <!--NAV-->
-    <nav class="header-nav">
-      <ul>
-        <li class="active">
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Receipt</a>
-        </li>
-        <li>
-          <a href="#">Feature</a>
-        </li>
-        <li>
-          <a href="#">Refer</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+      <!--NAV-->
+      <TheNavbar/>
+    </header>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+
+  methods: {
+    async userLogout() {
+      await this.$auth.logout()
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   .header {
@@ -57,21 +82,6 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #d1d1d1;
-    }
-    .header-nav {
-      ul {
-        text-align: center;
-        li {
-          list-style: none;
-          display: inline-block;
-          padding: 5px 15px;
-        }
-        li.active {
-          a {
-            color: #333333;
-          }
-        }
-      }
     }
   }
 </style>

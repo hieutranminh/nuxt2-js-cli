@@ -30,6 +30,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
@@ -38,6 +39,34 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'data.access_token',
+        },
+        user: {
+          property: 'data'
+        },
+        endpoints: {
+          login: {
+            url: 'https://api.stg.chibijob.com/user/auth/login',
+            method: 'post'
+          },
+          logout: {
+            url: 'https://api.stg.chibijob.com/user/auth/logout',
+            method: 'put'
+          },
+          user: {
+            url: 'https://api.stg.chibijob.com/user/auth/me',
+            method: 'get'
+          }
+        }
+      }
+    },
+    cookie: false
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
