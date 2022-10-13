@@ -8,11 +8,11 @@
     </section>
     <!--END - SECTION SLIDE-->
 
-    <!--SECTION CONTENT-->
-    <section class="section-content">
+    <!--SECTION NEWS-->
+    <section class="section-news">
       <div class="container">Content</div>
     </section>
-    <!--END - SECTION CONTENT-->
+    <!--END - SECTION NEWS-->
   </main>
 </template>
 
