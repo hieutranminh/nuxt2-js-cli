@@ -1,8 +1,5 @@
 <template>
-  <main class="main">
-    Sidebar
-    <NuxtChild />
-  </main>
+  <div>My Page</div>
 </template>
 
 <script>

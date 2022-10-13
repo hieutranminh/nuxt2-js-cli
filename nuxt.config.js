@@ -38,7 +38,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BASE_API_URL || 'http://localhost:8000/api',
   },
 
   auth: {
@@ -46,27 +46,18 @@ export default {
       local: {
         token: {
           property: 'data.access_token',
+          maxAge: 1800,
         },
         user: {
-          property: 'data'
+          property: 'data',
         },
         endpoints: {
-          login: {
-            url: 'https://api.stg.chibijob.com/user/auth/login',
-            method: 'post'
-          },
-          logout: {
-            url: 'https://api.stg.chibijob.com/user/auth/logout',
-            method: 'put'
-          },
-          user: {
-            url: 'https://api.stg.chibijob.com/user/auth/me',
-            method: 'get'
-          }
-        }
-      }
+          login: { url: 'auth/login', method: 'post' },
+          logout: { url: 'auth/logout', method: 'put' },
+          user: { url: 'auth/me', method: 'get' },
+        },
+      },
     },
-    cookie: false
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

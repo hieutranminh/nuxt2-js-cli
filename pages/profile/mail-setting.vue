@@ -1,8 +1,5 @@
 <template>
-  <main class="main">
-    Sidebar
-    <NuxtChild />
-  </main>
+  <div>Mail Setting</div>
 </template>
 
 <script>

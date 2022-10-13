@@ -4,7 +4,7 @@
       <span
         v-if="error"
         class="error">
-        {{error}}
+        {{ error }}
       </span>
 
       <form @submit.prevent="userLogin">
@@ -26,30 +26,30 @@
 </template>
 
 <script>
-export default {
-  middleware: 'guest',
+  export default {
+    middleware: 'guest',
 
-  data () {
-    return {
-      form: {
-        email: 'user@gmail.com',
-        password: '99999999',
-        is_remember: 0
-      },
-      error: null
-    }
-  },
-
-  methods: {
-    async userLogin() {
-      try {
-        await this.$auth.loginWith('local', { data: this.form })
-      } catch (e) {
-        this.error = e.response.data.message
+    data() {
+      return {
+        form: {
+          email: 'user@gmail.com',
+          password: '99999999',
+          is_remember: 0,
+        },
+        error: null,
       }
-    }
+    },
+
+    methods: {
+      async userLogin() {
+        try {
+          await this.$auth.loginWith('local', { data: this.form })
+        } catch (e) {
+          this.error = e.response.data.message
+        }
+      },
+    },
   }
-}
 </script>
 
 <style lang="scss" scoped>

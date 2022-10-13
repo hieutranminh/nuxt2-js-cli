@@ -6,7 +6,9 @@
           v-slot="{ navigate }"
           to="/"
           custom>
-          <a href="#" @click="navigate">
+          <a
+            href="#"
+            @click="navigate">
             Home
           </a>
         </NuxtLink>
@@ -28,24 +30,23 @@
 </template>
 
 <script>
-export default {
-}
+  export default {}
 </script>
 
 <style lang="scss" scoped>
-.header-nav {
-  ul {
-    text-align: center;
-    li {
-      list-style: none;
-      display: inline-block;
-      padding: 5px 15px;
-    }
-    li.active {
-      a {
-        color: #333333;
+  .header-nav {
+    ul {
+      text-align: center;
+      li {
+        list-style: none;
+        display: inline-block;
+        padding: 5px 15px;
+      }
+      li.active {
+        a {
+          color: #333333;
+        }
       }
     }
   }
-}
 </style>
