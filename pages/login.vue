@@ -32,8 +32,8 @@
     data() {
       return {
         form: {
-          email: 'user@gmail.com',
-          password: '99999999',
+          email: 'hieu.tranminhhcm@gmail.com',
+          password: 'Hh123123',
           is_remember: 0,
         },
         error: null,

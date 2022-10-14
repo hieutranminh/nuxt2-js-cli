@@ -16,42 +16,40 @@
       </div>
 
       <!--Button login & register-->
-      <client-only>
-        <div
-          v-if="!isAuthenticated"
-          class="btn-group">
-          <NuxtLink
-            v-slot="{ navigate }"
-            to="/login"
-            custom>
-            <button @click="navigate">Login</button>
-          </NuxtLink>
+      <div
+        v-if="!isAuthenticated"
+        class="btn-group">
+        <NuxtLink
+          v-slot="{ navigate }"
+          to="/login"
+          custom>
+          <button @click="navigate">Login</button>
+        </NuxtLink>
 
-          <NuxtLink
-            v-slot="{ navigate }"
-            to="/register"
-            custom>
-            <button @click="navigate">Register</button>
-          </NuxtLink>
-        </div>
+        <NuxtLink
+          v-slot="{ navigate }"
+          to="/register"
+          custom>
+          <button @click="navigate">Register</button>
+        </NuxtLink>
+      </div>
 
-        <div
-          v-else
-          class="btn-group">
-          <button @click.prevent="userLogout">Logout</button>
+      <div
+        v-else
+        class="btn-group">
+        <button @click.prevent="userLogout">Logout</button>
 
-          <NuxtLink
-            v-slot="{ navigate }"
-            to="/profile"
-            custom>
-            <a
-              href="#"
-              @click="navigate">
-              Profile
-            </a>
-          </NuxtLink>
-        </div>
-      </client-only>
+        <NuxtLink
+          v-slot="{ navigate }"
+          to="/profile"
+          custom>
+          <a
+            href="#"
+            @click="navigate">
+            Profile
+          </a>
+        </NuxtLink>
+      </div>
     </div>
 
     <!--NAV-->
